@@ -1,0 +1,301 @@
+/* -------------------------------- 
+
+File#: _2_flexi-header
+Title: Flexi Header
+Descr: Customizable header template
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --f-header-height: 50px;
+  --f-header-logo-width: 104px;
+}
+@media (min-width: 64rem) {
+  :root {
+    --f-header-height: 70px;
+  }
+}
+
+.f-header {
+  height: var(--f-header-height);
+  width: 100%;
+  @apply z-3;
+}
+.f-header::before {
+  /* used in JS to detect menu style */
+  display: none;
+  content: "mobile";
+}
+
+.f-header--expanded {
+  /* class added when navigation is visible - small devices only */
+}
+
+.f-header__mobile-content {
+  /* logo + menu button on small devices */
+  position: relative;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.f-header__logo {
+  display: block;
+  width: var(--f-header-logo-width);
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.f-header__logo svg, .f-header__logo img {
+  display: block;
+}
+
+.f-header__nav-control {
+  /* menu button */
+  --anim-menu-btn-size: 40px;
+  /* 🍔 icon */
+  --anim-menu-btn-icon-size: 28px;
+  --anim-menu-btn-icon-stroke: 2px;
+}
+
+.f-header__nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: calc(100vh - var(--f-header-offset, 0px));
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-scroll-chaining: none;
+  overscroll-behavior: contain;
+  @apply px-0 pt-0 pb-5 lg:pb-8;
+  @apply bg-floor;
+  @apply shadow-lg;
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-1em);
+}
+.f-header__nav::before {
+  /* top header bg + border */
+  content: "";
+  display: block;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: var(--f-header-height);
+  background-color: inherit;
+  @apply border-b border-solid border-contrast-lower;
+}
+
+.f-header__nav--is-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition: visibility 0s, opacity 0.3s, transform 0.3s;
+}
+
+.f-header__nav-logo-wrapper {
+  display: none;
+  /* hide logo nav on small devices */
+}
+
+.f-header__item {
+  flex-shrink: 0;
+  @apply border-b border-solid border-contrast-lower;
+}
+
+.f-header__dropdown-icon {
+  --size: 16px;
+  flex-shrink: 0;
+  margin: 0 10px 0 auto;
+  display: none;
+  /* hide on mobile if link */
+}
+.f-header__dropdown-control .f-header__dropdown-icon {
+  display: block;
+}
+
+.f-header__link,
+.f-header__dropdown-control,
+.f-header__dropdown-link,
+.f-header__btn,
+.f-header__form-control {
+  @apply text-lg lg:text-2xl;
+}
+
+.f-header__link,
+.f-header__dropdown-control,
+.f-header__dropdown-link {
+  display: flex;
+  align-items: center;
+  @apply text-contrast-high;
+  text-decoration: none;
+  @apply py-2 lg:py-3 px-0;
+  transition: 0.2s;
+}
+.f-header__link:hover, .f-header__link[aria-current=page],
+.f-header__dropdown-control:hover,
+.f-header__dropdown-control[aria-current=page],
+.f-header__dropdown-link:hover,
+.f-header__dropdown-link[aria-current=page] {
+  opacity: 0.7;
+}
+
+.f-header__btn,
+.f-header__form-control {
+  width: 100%;
+  @apply my-2 lg:my-3 mx-0;
+}
+
+.f-header__dropdown-control {
+  width: 100%;
+}
+
+.f-header__dropdown {
+  /* sub navigation */
+  @apply pl-5 lg:pl-8;
+  /* offset sub nav */
+}
+
+.f-header__dropdown-control + .f-header__dropdown {
+  display: none;
+}
+.f-header__dropdown-control[aria-expanded=true] + .f-header__dropdown {
+  display: block;
+}
+
+@media (min-width: 64rem) {
+  .f-header::before {
+    content: "desktop";
+  }
+
+  .f-header__mobile-content {
+    display: none;
+    /* hide logo + menu (mobile content) */
+  }
+
+  .f-header__nav {
+    /* reset */
+    position: static;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition: none;
+    max-height: none;
+    overflow: visible;
+    -ms-scroll-chaining: chained;
+    overscroll-behavior: auto;
+    height: var(--f-header-height);
+  }
+  .f-header__nav::before {
+    /* reset */
+    display: none;
+  }
+
+  .f-header__nav-logo-wrapper {
+    display: flex;
+  }
+
+  .f-header__nav-grid,
+.f-header__list {
+    display: flex;
+    align-items: center;
+  }
+
+  .f-header__nav-grid {
+    height: 100%;
+  }
+
+  .f-header__item {
+    position: relative;
+    border-bottom: none;
+    @apply mr-3;
+    /* margin between nav items */
+  }
+  .f-header__item:last-child {
+    margin-right: 0;
+  }
+
+  .f-header__dropdown-icon {
+    --size: 12px;
+    display: block;
+    @apply my-0 mr-0 ml-1;
+  }
+
+  .f-header__link,
+.f-header__dropdown-control,
+.f-header__dropdown-link,
+.f-header__btn,
+.f-header__form-control {
+    font-size: 1.125rem;
+  }
+
+  .f-header__link {
+    @apply py-1.5 px-2;
+  }
+
+  .f-header__link--icon span {
+    display: none;
+    /* hide icon label */
+  }
+
+  .f-header__btn,
+.f-header__form-control {
+    margin: 0;
+    /* reset */
+  }
+
+  .f-header__dropdown {
+    position: absolute;
+    top: 100%;
+    width: 220px;
+    left: calc(50% - 110px);
+    @apply py-1.5 px-0;
+    @apply bg-floor-light;
+    @apply rounded;
+    @apply shadow-inner-md;
+    @apply z-5;
+    /* hide */
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.2s, opacity 0.2s 0s;
+  }
+  .f-header__dropdown-control + .f-header__dropdown {
+    display: block;
+    /* reset style */
+  }
+  .f-header__item:hover .f-header__dropdown, .f-header__dropdown-control[aria-expanded=true] + .f-header__dropdown {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.2s 0s, opacity 0.2s 0s;
+  }
+
+  .f-header__dropdown-link {
+    @apply text-contrast-high;
+    @apply py-3 px-5;
+    transition: 0.2s;
+  }
+  .f-header__dropdown-link:hover {
+    background-color: hsla(var(--color-contrast-higher) / 0.075);
+    @apply text-contrast-higher;
+  }
+}
+html:not(.js) .f-header {
+  height: auto;
+}
+html:not(.js) .f-header__nav-control {
+  display: none;
+}
+html:not(.js) .f-header__nav {
+  position: static;
+  @apply px-0 pt-1.5 lg:pt-2 pb-5 lg:pb-8;
+  box-shadow: none;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}

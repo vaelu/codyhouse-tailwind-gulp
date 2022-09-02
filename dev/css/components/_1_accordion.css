@@ -1,0 +1,124 @@
+/* -------------------------------- 
+
+File#: _1_accordion
+Title: Accordion
+Descr: Create stacked sections of content and allow the user to expand/collapse them
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --accordion-border-width: 1px;
+  --accordion-icon-size: 1em;
+  --accordion-icon-stroke-width: 1.5px;
+}
+
+.accordion__item {
+  @apply border-solid border-contrast-lower;
+  border-bottom-width: var(--accordion-border-width);
+}
+.accordion__item:first-child {
+  border-top-width: var(--accordion-border-width);
+}
+
+.accordion__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  cursor: pointer;
+}
+.accordion__header .icon {
+  --size: var(--accordion-icon-size);
+}
+.accordion__header .icon .icon__group {
+  stroke-width: var(--accordion-icon-stroke-width);
+}
+
+.accordion__icon-arrow .icon__group,
+.accordion__icon-arrow-v2 .icon__group,
+.accordion__icon-plus .icon__group {
+  will-change: transform;
+  transform-origin: 8px 8px;
+}
+.accordion__icon-arrow .icon__group > *,
+.accordion__icon-arrow-v2 .icon__group > *,
+.accordion__icon-plus .icon__group > * {
+  transform-origin: 8px 8px;
+}
+
+.accordion__icon-arrow .icon__group > *,
+.accordion__icon-arrow-v2 .icon__group > * {
+  stroke-dasharray: 17;
+  transform: translateY(3px);
+}
+.accordion__icon-arrow .icon__group > *:first-child,
+.accordion__icon-arrow-v2 .icon__group > *:first-child {
+  stroke-dashoffset: 8.5;
+}
+.accordion__icon-arrow .icon__group > *:last-child,
+.accordion__icon-arrow-v2 .icon__group > *:last-child {
+  stroke-dashoffset: 8.5;
+}
+
+.accordion__icon-plus .icon__group {
+  transform: rotate(-90deg);
+}
+.accordion__icon-plus .icon__group > *:first-child {
+  transform: rotate(-90deg);
+}
+
+.accordion__item--is-open > .accordion__header > .accordion__icon-arrow .icon__group > *:first-child {
+  transform: translateY(-3px) rotate(-90deg);
+}
+.accordion__item--is-open > .accordion__header > .accordion__icon-arrow .icon__group > *:last-child {
+  transform: translateY(-3px) rotate(90deg);
+}
+.accordion__item--is-open > .accordion__header > .accordion__icon-arrow-v2 .icon__group {
+  transform: rotate(-90deg);
+}
+.accordion__item--is-open > .accordion__header > .accordion__icon-arrow-v2 .icon__group > *:first-child, .accordion__item--is-open > .accordion__header > .accordion__icon-arrow-v2 .icon__group *:last-child {
+  stroke-dashoffset: 0;
+  transform: translateY(0px);
+}
+.accordion__item--is-open > .accordion__header > .accordion__icon-plus .icon__group {
+  transform: rotate(0);
+}
+.accordion__item--is-open > .accordion__header > .accordion__icon-plus .icon__group > *:first-child {
+  transform: rotate(0);
+}
+
+.js .accordion__panel {
+  display: none;
+  will-change: height;
+  transform: translateZ(0px);
+}
+.js .accordion__item--is-open > .accordion__panel {
+  display: block;
+}
+
+.accordion[data-animation=on] .accordion__item--is-open .accordion__panel > * {
+  animation: accordion-entry-animation 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.accordion[data-animation=on] .accordion__icon-arrow .icon__group,
+.accordion[data-animation=on] .accordion__icon-arrow-v2 .icon__group,
+.accordion[data-animation=on] .accordion__icon-plus .icon__group {
+  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.accordion[data-animation=on] .accordion__icon-arrow .icon__group > *,
+.accordion[data-animation=on] .accordion__icon-arrow-v2 .icon__group > *,
+.accordion[data-animation=on] .accordion__icon-plus .icon__group > * {
+  transition: transform 0.3s, stroke-dashoffset 0.3s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes accordion-entry-animation {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

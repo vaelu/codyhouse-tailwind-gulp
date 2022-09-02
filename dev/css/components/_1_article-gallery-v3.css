@@ -1,0 +1,66 @@
+/* -------------------------------- 
+
+File#: _1_article-gallery-v3
+Title: Article Gallery v3
+Descr: A gallery of blog articles
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.articles-v3__img {
+  display: block;
+  transition: opacity 0.3s;
+  @apply rounded;
+  overflow: hidden;
+}
+.articles-v3__img img {
+  display: block;
+  width: 100%;
+}
+.articles-v3__img:hover {
+  opacity: 0.85;
+}
+
+.articles-v3__headline {
+  @apply text-2xl lg:text-4xl;
+}
+.articles-v3__headline a {
+  @apply text-contrast-higher;
+  text-decoration: none;
+}
+.articles-v3__headline a:hover {
+  text-decoration: underline;
+}
+
+.articles-v3__author {
+  display: grid;
+  grid-template-columns: 3em 1fr;
+  @apply gap-2 lg:gap-3;
+  align-items: center;
+  @apply mt-5 lg:mt-8;
+}
+
+.articles-v3__author-img {
+  display: block;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.articles-v3__author-img img {
+  display: block;
+  width: inherit;
+  height: inherit;
+}
+.articles-v3__author-img:hover {
+  transform: scale(1.1);
+}
+
+.articles-v3__author-name {
+  font-weight: bold;
+  @apply text-contrast-higher;
+  text-decoration: none;
+}
+.articles-v3__author-name:hover {
+  text-decoration: underline;
+}

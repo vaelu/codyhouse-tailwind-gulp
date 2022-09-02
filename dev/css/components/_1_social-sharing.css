@@ -1,0 +1,31 @@
+/* -------------------------------- 
+
+File#: _1_social-sharing
+Title: Social Sharing
+Descr: Social sharing plugin
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.sharebar__btn {
+  --size: 60px;
+  width: var(--size);
+  height: var(--size);
+  display: flex;
+  background: hsla(var(--color-contrast-higher) / 0.1);
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.sharebar__btn .icon {
+  --size: 24px;
+  display: block;
+  margin: auto;
+  @apply text-contrast-high;
+  transition: color 0.2s;
+}
+.sharebar__btn:hover {
+  background-color: hsla(var(--color-contrast-higher) / 0.075);
+  @apply shadow-md;
+}
+.sharebar__btn:hover .icon {
+  @apply text-contrast-higher;
+}

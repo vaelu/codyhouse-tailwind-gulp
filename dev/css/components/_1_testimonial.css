@@ -1,0 +1,20 @@
+/* -------------------------------- 
+
+File#: _1_testimonial
+Title: Testimonial
+Descr: A testimonial quote 
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.testimonial__block-wrapper {
+  position: relative;
+}
+.testimonial__block-wrapper blockquote {
+  position: relative;
+  z-index: 1;
+}
+.testimonial__block-wrapper .icon {
+  position: absolute;
+  top: -0.5em;
+  left: -0.5em;
+}

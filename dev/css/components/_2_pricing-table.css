@@ -1,0 +1,85 @@
+/* -------------------------------- 
+
+File#: _2_pricing-table
+Title: Pricing Table
+Descr: A table used to compare prices and features of different products
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.p-table__item {
+  @apply bg-floor-dark;
+  @apply rounded-lg;
+  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.075);
+  @apply p-5 lg:p-8;
+  display: flex;
+  flex-direction: column;
+}
+
+.p-table__item--popular {
+  @apply bg-floor-light;
+  box-shadow: 0 0 0 2px hsl(var(--color-primary)), 0 0.9px 1.5px rgba(0, 0, 0, 0.03), 0 3.1px 5.5px rgba(0, 0, 0, 0.08), 0 14px 25px rgba(0, 0, 0, 0.12);
+}
+
+.p-table__badge {
+  @apply text-sm lg:text-base;
+  @apply bg-contrast-high;
+  @apply text-floor;
+  @apply py-1 lg:py-1.5 px-1.5 lg:px-2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  @apply rounded;
+}
+
+.p-table__price span {
+  @apply text-4xl lg:text-6xl;
+  font-weight: bold;
+}
+.p-table__price i {
+  @apply text-contrast-low;
+}
+
+.p-table__features li {
+  @apply mb-2 lg:mb-3;
+}
+
+.p-table__switch {
+  display: none;
+}
+
+.js .p-table--has-switch .p-table__price-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.js .p-table--has-switch .p-table__price {
+  will-change: transform;
+  transition: transform 0.3s, opacity 0.3s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.js .p-table--has-switch .p-table__price[data-transition-delay="2nd"] {
+  transition-delay: 0.1s;
+}
+.js .p-table--has-switch .p-table__price[data-transition-delay="3rd"] {
+  transition-delay: 0.2s;
+}
+.js .p-table--has-switch .p-table__price--month {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.js .p-table--has-switch .p-table__price--year {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(100%);
+}
+.js .p-table--yearly .p-table__price--month {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.js .p-table--yearly .p-table__price--year {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}

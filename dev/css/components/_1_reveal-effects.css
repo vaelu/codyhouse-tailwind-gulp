@@ -1,0 +1,108 @@
+/* -------------------------------- 
+
+File#: _1_reveal-effects
+Title: Reveal Effects
+Descr: A collection of reveal effects targeting specific elements as they enter the viewport
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --reveal-fx-duration: 0.6s;
+  --reveal-fx-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.js .reveal-fx {
+  opacity: 0;
+  transition: opacity, transform var(--reveal-fx-timing-function);
+  transition-duration: var(--reveal-fx-duration);
+}
+.js .reveal-fx::before {
+  display: none;
+  content: "reveal-fx";
+}
+.js .reveal-fx--translate, .js .reveal-fx--translate-up {
+  transform: translateY(50px);
+}
+.js .reveal-fx--translate-right {
+  transform: translateX(-50px);
+}
+.js .reveal-fx--translate-left {
+  transform: translateX(50px);
+}
+.js .reveal-fx--translate-down {
+  transform: translateY(-50px);
+}
+.js .reveal-fx--scale {
+  transform: scale(0.8);
+}
+.js .reveal-fx--scale-up {
+  transform: translateY(50px) scale(0.8);
+}
+.js .reveal-fx--scale-right {
+  transform: translateX(-50px) scale(0.8);
+}
+.js .reveal-fx--scale-left {
+  transform: translateX(50px) scale(0.8);
+}
+.js .reveal-fx--scale-down {
+  transform: translateY(-50px) scale(0.8);
+}
+.js .reveal-fx--rotate, .js .reveal-fx--rotate-down, .js .reveal-fx--rotate-right, .js .reveal-fx--rotate-left, .js .reveal-fx--rotate-up {
+  perspective: 1000px;
+}
+.js .reveal-fx--rotate > *, .js .reveal-fx--rotate-down > *, .js .reveal-fx--rotate-right > *, .js .reveal-fx--rotate-left > *, .js .reveal-fx--rotate-up > * {
+  transition: transform var(--reveal-fx-duration) var(--reveal-fx-timing-function);
+  backface-visibility: hidden;
+}
+.js .reveal-fx--rotate > *, .js .reveal-fx--rotate-down > * {
+  transform-origin: top;
+  transform: rotateX(-45deg);
+}
+.js .reveal-fx--rotate-right > * {
+  transform-origin: left center;
+  transform: rotateY(45deg);
+}
+.js .reveal-fx--rotate-left > * {
+  transform-origin: right center;
+  transform: rotateY(-45deg);
+}
+.js .reveal-fx--rotate-up > * {
+  transform-origin: bottom;
+  transform: rotateX(45deg);
+}
+.js .reveal-fx--text-mask {
+  overflow: hidden;
+}
+.js .reveal-fx--text-mask > * {
+  display: inline-block;
+  transform: translateY(100%);
+  transition: transform var(--reveal-fx-duration) var(--reveal-fx-timing-function);
+  will-change: transform;
+}
+.js [class*=reveal-fx--translate], .js [class*=reveal-fx--scale] {
+  will-change: opacity, transform;
+}
+.js .reveal-fx--text-mask > *, .js [class*=reveal-fx--rotate] > * {
+  will-change: transform;
+}
+.js .reveal-fx--clip-x > *,
+.js .reveal-fx--clip-y > * {
+  transition: opacity, clip-path cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-duration: var(--reveal-fx-duration);
+}
+.js .reveal-fx--clip-x > * {
+  clip-path: polygon(10% 0%, 90% 0%, 90% 100%, 10% 100%);
+}
+.js .reveal-fx--clip-y > * {
+  clip-path: polygon(0% 50%, 100% 50%, 100% 100%, 0% 100%);
+}
+.js .reveal-fx--is-visible {
+  opacity: 1;
+}
+.js .reveal-fx--is-visible[class*=reveal-fx--translate], .js .reveal-fx--is-visible[class*=reveal-fx--scale], .js .reveal-fx--is-visible[class*=reveal-fx--rotate] > *, .js .reveal-fx--is-visible.reveal-fx--text-mask > * {
+  transform: translate(0);
+}
+.js .reveal-fx--is-visible.reveal-fx--clip-x > *, .js .reveal-fx--is-visible.reveal-fx--clip-y > * {
+  opacity: 1;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}

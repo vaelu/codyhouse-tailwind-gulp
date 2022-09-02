@@ -1,0 +1,33 @@
+/* -------------------------------- 
+
+File#: _1_skip-link
+Title: Skip Link
+Descr: Accessibility feature that allows users to jump to the main content of the page
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.skip-link {
+  position: absolute;
+  @apply z-10;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  @apply py-3 lg:py-5 px-5 lg:px-8;
+  @apply bg-floor-light;
+  @apply shadow-xl;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  clip: rect(1px, 1px, 1px, 1px);
+   clip-path: inset(50%);
+}
+.skip-link:focus, .skip-link.skip-link--focus {
+  clip: auto;
+  clip-path: none;
+  outline: 3px solid hsla(var(--color-primary) / 0.2);
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

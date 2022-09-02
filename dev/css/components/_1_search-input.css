@@ -1,0 +1,98 @@
+/* -------------------------------- 
+
+File#: _1_search-input
+Title: Search input
+Descr: Search input field with custom button
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --search-input-btn-width: 2.2em;
+  --search-input-icon-size: 1em;
+  --search-input-shortcut-margin: 0.325em;
+  /* gap between the shortcut badge and the input edges */
+}
+
+.search-input {
+  position: relative;
+}
+
+.search-input__input {
+  width: 100%;
+  height: 100%;
+}
+.search-input__input::-webkit-search-decoration, .search-input__input::-webkit-search-cancel-button, .search-input__input::-webkit-search-results-button, .search-input__input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+.search-input__input::-ms-clear, .search-input__input::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.search-input--icon-right .search-input__input {
+  padding-right: var(--search-input-btn-width);
+}
+.search-input--icon-left .search-input__input {
+  padding-left: var(--search-input-btn-width);
+}
+
+.search-input__btn {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  line-height: inherit;
+  appearance: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: var(--search-input-btn-width);
+}
+.search-input__btn:active .icon {
+  transform: translateY(2px);
+}
+.search-input__btn .icon {
+  display: block;
+  --size: var(--search-input-icon-size);
+  margin-left: auto;
+  margin-right: auto;
+  @apply text-contrast-low;
+  /* icon color */
+  transition: 0.2s;
+}
+.search-input--icon-left .search-input__btn {
+  left: 0;
+  right: auto;
+  pointer-events: none;
+}
+
+.search-input__btn:focus .icon,
+.search-input .search-input__input:focus + .search-input__btn .icon {
+  @apply text-primary;
+  /* active icon color */
+}
+
+/* --shortcut */
+.search-input__shortcut {
+  position: absolute;
+  right: var(--search-input-shortcut-margin);
+  top: var(--search-input-shortcut-margin);
+  height: calc(100% - var(--search-input-shortcut-margin)*2);
+  display: flex;
+  align-items: center;
+  @apply bg-floor;
+  @apply border-1 border-solid border-contrast-lower;
+  @apply rounded-sm;
+  @apply py-0 px-1 lg:px-1.5;
+  line-height: 1;
+  @apply text-contrast-medium;
+}
+
+.search-input:focus-within .search-input__shortcut {
+  display: none;
+}

@@ -1,0 +1,14 @@
+/* -------------------------------- 
+
+File#: _2_contact
+Title: Contact
+Descr: Contact block w/ info about how to get in touch
+Usage: codyhouse.co/license
+
+-------------------------------- */
+@media (min-width: 64rem) {
+  .contact .google-maps {
+    height: auto;
+    padding-bottom: 0;
+  }
+}

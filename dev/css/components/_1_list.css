@@ -1,0 +1,170 @@
+/* -------------------------------- 
+
+File#: _1_list
+Title: List
+Descr: Custom list component
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --list-space-y: 0.375em;
+  --list-offset: 1em;
+  --list-line-height-multiplier: 1;
+}
+
+.list, .text-component .list {
+  padding-left: 0;
+  list-style: none;
+}
+.list ul, .list ol, .text-component .list ul, .text-component .list ol {
+  list-style: none;
+  margin: 0;
+  margin-top: calc((var(--list-space-y) / 2) * var(--text-space-y-multiplier, 1));
+  padding-top: calc((var(--list-space-y) / 2) * var(--text-space-y-multiplier, 1));
+  padding-left: var(--list-offset);
+}
+.list li, .text-component .list li {
+  padding-bottom: calc((var(--list-space-y) / 2) * var(--text-space-y-multiplier, 1));
+  margin-bottom: calc((var(--list-space-y) / 2) * var(--text-space-y-multiplier, 1));
+  line-height: calc(var(--body-line-height) * var(--list-line-height-multiplier));
+}
+.list > li:last-child, .list ul > li:last-child, .list ol > li:last-child, .text-component .list > li:last-child, .text-component .list ul > li:last-child, .text-component .list ol > li:last-child {
+  margin-bottom: 0;
+}
+.list:not(.list--border) > li:last-child, .list ul > li:last-child, .list ol > li:last-child, .text-component .list:not(.list--border) > li:last-child, .text-component .list ul > li:last-child, .text-component .list ol > li:last-child {
+  padding-bottom: 0;
+}
+
+/* #region (ul + ol) */
+.list--ul, .text-component .list--ul,
+.list--ol, .text-component .list--ol {
+  --list-offset: calc(var(--list-bullet-size) + var(--list-bullet-margin-right));
+}
+.list--ul ul, .list--ul ol, .text-component .list--ul ul, .text-component .list--ul ol,
+.list--ol ul,
+.list--ol ol, .text-component .list--ol ul, .text-component .list--ol ol {
+  padding-left: 0;
+}
+@supports (--css: variables) {
+  .list--ul li, .text-component .list--ul li,
+.list--ol li, .text-component .list--ol li {
+    padding-left: var(--list-offset) !important;
+  }
+}
+.list--ul li::before, .text-component .list--ul li::before,
+.list--ol li::before, .text-component .list--ol li::before {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  position: relative;
+  top: -0.1em;
+}
+@supports (--css: variables) {
+  .list--ul li::before, .text-component .list--ul li::before,
+.list--ol li::before, .text-component .list--ol li::before {
+    width: var(--list-bullet-size) !important;
+    height: var(--list-bullet-size) !important;
+    margin-left: calc(var(--list-bullet-size) * -1) !important;
+    left: calc(var(--list-bullet-margin-right) * -1) !important;
+  }
+}
+
+.list--ul, .text-component .list--ul {
+  --list-bullet-size: 7px;
+  --list-bullet-margin-right: 12px;
+}
+.list--ul > li, .text-component .list--ul > li {
+  padding-left: 19px;
+}
+.list--ul > li::before, .text-component .list--ul > li::before {
+  content: "";
+  border-radius: 50%;
+  @apply text-contrast-lower;
+  background-color: currentColor;
+  width: 7px;
+  height: 7px;
+  margin-left: -7px;
+  left: -12px;
+}
+.list--ul ul li::before, .text-component .list--ul ul li::before {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
+.list--ol, .text-component .list--ol {
+  --list-bullet-size: 26px;
+  --list-bullet-margin-right: 6px;
+  --list-bullet-font-size: 14px;
+  counter-reset: list-items;
+}
+.list--ol > li, .text-component .list--ol > li {
+  counter-increment: list-items;
+  padding-left: 32px;
+}
+.list--ol ol, .text-component .list--ol ol {
+  counter-reset: list-items;
+}
+.list--ol > li::before, .text-component .list--ol > li::before {
+  content: counter(list-items);
+  font-size: var(--list-bullet-font-size, 14px);
+  @apply bg-contrast-lower;
+  @apply text-contrast-high;
+  line-height: 1;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  margin-left: -26px;
+  left: -6px;
+}
+.list--ol ol > li::before, .text-component .list--ol ol > li::before {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px hsl(var(--color-contrast-lower));
+}
+
+/* #endregion */
+/* #region (border) */
+.list--border li:not(:last-child), .text-component .list--border li:not(:last-child) {
+  border-bottom: 1px solid hsl(var(--color-contrast-lower));
+}
+.list--border ul, .list--border ol, .text-component .list--border ul, .text-component .list--border ol {
+  border-top: 1px solid hsl(var(--color-contrast-lower));
+}
+
+/* #endregion */
+/* #region (icons) */
+.list--icons, .text-component .list--icons {
+  --list-bullet-size: 24px;
+  --list-bullet-margin-right: 8px;
+  --list-offset: calc(var(--list-bullet-size) + var(--list-bullet-margin-right));
+}
+.list--icons ul, .list--icons ol, .text-component .list--icons ul, .text-component .list--icons ol {
+  padding-left: 32px;
+}
+@supports (--css: variables) {
+  .list--icons ul, .list--icons ol, .text-component .list--icons ul, .text-component .list--icons ol {
+    padding-left: var(--list-offset);
+  }
+}
+
+.list__icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+.list__icon:not(.top-0) {
+  top: calc((1em * var(--body-line-height) - 24px) / 2);
+}
+@supports (--css: variables) {
+  .list__icon {
+    width: var(--list-bullet-size);
+    height: var(--list-bullet-size);
+    margin-right: var(--list-bullet-margin-right);
+  }
+  .list__icon:not(.top-0) {
+    top: calc((1em * var(--body-line-height) * var(--list-line-height-multiplier) - var(--list-bullet-size)) / 2);
+  }
+}
+
+/* #endregion */

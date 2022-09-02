@@ -1,0 +1,284 @@
+/* -------------------------------- 
+
+File#: _1_button-effects
+Title: Button Effects
+Descr: A collection of button effects
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.btn-fx-1 {
+  --border-radius: 0.25em;
+  --transition-duration: .3s;
+  position: relative;
+  display: inline-block;
+  border-radius: var(--border-radius);
+  line-height: 1;
+  text-decoration: none;
+  @apply text-primary;
+  transition: var(--transition-duration);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+}
+.btn-fx-1 span, .btn-fx-1 .btn-fx-1__icon-wrapper {
+  position: relative;
+  z-index: 2;
+}
+.btn-fx-1 .icon {
+  display: block;
+  will-change: transform;
+  transition: var(--transition-duration);
+}
+.btn-fx-1 .icon:first-child {
+  @apply text-primary;
+}
+.btn-fx-1 .icon:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  @apply text-white;
+  transform: translateY(100%);
+}
+.btn-fx-1:hover {
+  @apply text-white;
+}
+.btn-fx-1:hover .icon:first-child {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.btn-fx-1:hover .icon:last-child {
+  opacity: 1;
+  transform: translateY(0);
+}
+.btn-fx-1:hover .btn-fx-1__inner::after {
+  transform: skewY(0deg) scaleY(2);
+}
+.btn-fx-1:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px hsl(var(--color-floor)), 0 0 0 3px hsl(var(--color-primary));
+}
+
+.btn-fx-1__inner {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsla(var(--color-primary) / 0.15);
+  overflow: hidden;
+  clip-path: inset(0% 0% 0% 0% round var(--border-radius));
+}
+.btn-fx-1__inner::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: -5%;
+  width: 110%;
+  height: 100%;
+  @apply bg-primary;
+  transform-origin: center bottom;
+  transform: skewY(10deg) scaleY(0);
+  transition: transform var(--transition-duration);
+}
+
+.btn-fx-2 {
+  position: relative;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.btn-fx-2 span {
+  position: relative;
+  display: inline-flex;
+  clip-path: inset(0%);
+}
+.btn-fx-2 em {
+  display: inline-flex;
+}
+.btn-fx-2 em * {
+  @apply text-primary;
+  padding: 0.25em 0;
+  will-change: transform;
+  transition: transform 0.3s;
+}
+.btn-fx-2 em:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.btn-fx-2 em:last-child * {
+  transform: translateY(100%);
+}
+.btn-fx-2::before, .btn-fx-2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  left: 0;
+  width: 100%;
+}
+.btn-fx-2::before {
+  background-color: hsla(var(--color-primary) / 0.2);
+}
+.btn-fx-2::after {
+  @apply bg-primary;
+  transform: scaleX(0);
+  transition: transform 0.3s;
+  transform-origin: right center;
+}
+.btn-fx-2:hover em *:nth-child(2) {
+  transition-delay: 0.05s;
+}
+.btn-fx-2:hover em *:nth-child(3) {
+  transition-delay: 0.1s;
+}
+.btn-fx-2:hover em *:nth-child(4) {
+  transition-delay: 0.15s;
+}
+.btn-fx-2:hover em *:nth-child(5) {
+  transition-delay: 0.2s;
+}
+.btn-fx-2:hover em *:nth-child(6) {
+  transition-delay: 0.25s;
+}
+.btn-fx-2:hover em *:nth-child(7) {
+  transition-delay: 0.3s;
+}
+.btn-fx-2:hover em *:nth-child(8) {
+  transition-delay: 0.35s;
+}
+.btn-fx-2:hover em *:nth-child(9) {
+  transition-delay: 0.4s;
+}
+.btn-fx-2:hover em *:nth-child(10) {
+  transition-delay: 0.45s;
+}
+.btn-fx-2:hover em:first-child * {
+  transform: translateY(-100%);
+}
+.btn-fx-2:hover em:last-child * {
+  transform: translateY(0);
+}
+.btn-fx-2:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.btn-fx-3 {
+  --transition-duration: 0.3s;
+  position: relative;
+  display: inline-block;
+  @apply text-floor;
+  line-height: 1;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+  will-change: transform;
+  transition: transform var(--transition-duration);
+}
+.btn-fx-3 span {
+  will-change: transform;
+  transition: opacity var(--transition-duration), transform var(--transition-duration) cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.btn-fx-3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  @apply bg-contrast-higher;
+  border-radius: inherit;
+  will-change: transform;
+  transition: transform var(--transition-duration) cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow var(--transition-duration);
+}
+.btn-fx-3:active {
+  transform: scale(0.9);
+}
+.btn-fx-3:hover span {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.btn-fx-3:hover::before {
+  transform: scale(1.1);
+}
+.btn-fx-3:hover .btn-fx-3__icon-wrapper {
+  transform: translateY(0);
+}
+.btn-fx-3:focus {
+  outline: none;
+}
+.btn-fx-3:focus::before {
+  box-shadow: 0 0.3px 0.4px rgba(0, 0, 0, 0.025), 0 0.9px 1.5px rgba(0, 0, 0, 0.05), 0 3.5px 6px rgba(0, 0, 0, 0.1), 0 0 0 3px hsla(var(--color-contrast-higher) / 0.15);
+}
+
+.btn-fx-3__inner {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  clip-path: inset(0%);
+}
+
+.btn-fx-3__icon-wrapper {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  will-change: transform;
+  transform: translateY(100%);
+  transition: transform var(--transition-duration) cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.btn-fx-3__icon-wrapper .icon {
+  margin: auto;
+}
+
+.btn-fx-4 {
+  --transition-duration: .3s;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  @apply bg-contrast-higher;
+  @apply shadow-md;
+  overflow: hidden;
+  line-height: 1;
+  text-decoration: none;
+  @apply text-floor;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: var(--transition-duration);
+}
+.btn-fx-4 span {
+  position: relative;
+  z-index: 2;
+}
+.btn-fx-4::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: hsla(var(--color-floor) / 0.25);
+  will-change: transform;
+  transform: skewX(-15deg) translate(calc(-100% - 0.5em));
+  pointer-events: none;
+}
+.btn-fx-4:hover::before {
+  transform: skewX(-15deg) translate(calc(100% + 0.5em));
+  transition: transform var(--transition-duration);
+}
+.btn-fx-4:focus {
+  outline: none;
+  box-shadow: 0 0.3px 0.4px rgba(0, 0, 0, 0.025), 0 0.9px 1.5px rgba(0, 0, 0, 0.05), 0 3.5px 6px rgba(0, 0, 0, 0.1), 0 0 0 3px hsla(var(--color-contrast-higher) / 0.15);
+}

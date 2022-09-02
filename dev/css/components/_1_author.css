@@ -1,0 +1,89 @@
+/* -------------------------------- 
+
+File#: _1_author
+Title: Author
+Descr: Author introduction card
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --author-img-size: 4em;
+}
+
+.author {
+  display: grid;
+  grid-template-columns: var(--author-img-size) 1fr;
+  @apply gap-3 lg:gap-5;
+}
+
+.author__img-wrapper {
+  display: inline-block;
+  border-radius: 50%;
+  width: var(--author-img-size);
+  height: var(--author-img-size);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.author__img-wrapper:hover {
+  transform: scale(1.1);
+}
+.author__img-wrapper img {
+  display: block;
+  width: inherit;
+  height: inherit;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.author__content a {
+  color: inherit;
+}
+.author__content a:hover {
+  @apply text-primary;
+}
+
+.author--meta {
+  --author-img-size: 3em;
+  align-items: center;
+  @apply gap-2 lg:gap-3;
+}
+
+.author--minimal {
+  --author-img-size: 2.4em;
+  align-items: center;
+  @apply gap-1.5 lg:gap-2;
+}
+
+.author--featured {
+  --author-img-size: 6em;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  text-align: center;
+}
+.author--featured .author__img-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.author__social {
+  --size: 40px;
+  width: var(--size);
+  height: var(--size);
+  display: flex;
+  background-color: hsla(var(--color-contrast-higher) / 0.1);
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.author__social .icon {
+  --size: 16px;
+  display: block;
+  margin: auto;
+  @apply text-contrast-higher;
+  transition: color 0.2s;
+}
+.author__social:hover {
+  background-color: hsla(var(--color-contrast-higher) / 0.075);
+}
+.author__social:hover .icon {
+  @apply text-primary;
+}

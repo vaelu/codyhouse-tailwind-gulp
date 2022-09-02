@@ -1,0 +1,85 @@
+/* -------------------------------- 
+
+File#: _1_feature-v9
+Title: Feature v9
+Descr: A feature section with 2 blocks
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.feature-v9:hover .feature-v9__block:not(:hover) .feature-v9__content {
+  opacity: 0.5;
+}
+.feature-v9:hover .feature-v9__block:not(:hover)::after {
+  background-color: hsla(var(--color-black) / 0.8);
+  backdrop-filter: grayscale(100%);
+}
+
+.feature-v9__block {
+  position: relative;
+  display: flex;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  @apply py-12 lg:py-20 px-5 lg:px-8;
+  min-height: 350px;
+}
+.feature-v9__block::before, .feature-v9__block::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: 0.2s;
+}
+.feature-v9__block::before {
+  height: 70%;
+  background: linear-gradient(hsla(var(--color-black) / 0), hsla(var(--color-black) / 0.8));
+  mix-blend-mode: multiply;
+}
+.feature-v9__block::after {
+  height: 100%;
+  background-color: hsla(var(--color-black) / 0);
+}
+.feature-v9__block:hover .feature-v9__content {
+  transform: translateY(-10px);
+}
+@media (min-width: 48rem) {
+  .feature-v9__block {
+    min-height: 450px;
+  }
+}
+@media (min-width: 64rem) {
+  .feature-v9__block {
+    min-height: 600px;
+  }
+}
+@media (min-width: 80rem) {
+  .feature-v9__block {
+    min-height: 700px;
+  }
+}
+
+.feature-v9__content {
+  position: relative;
+  z-index: 2;
+  @apply text-white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: auto auto 0;
+  transition: 0.2s;
+}
+
+.feature-v9__link {
+  @apply text-black;
+  text-decoration: none;
+  display: inline-block;
+  @apply py-2 lg:py-3 px-5 lg:px-8;
+  background-color: hsla(var(--color-white) / 0.8);
+  @apply rounded;
+  backdrop-filter: blur(5px);
+  transition: background-color 0.2s;
+}
+.feature-v9__link:hover {
+  background-color: hsla(var(--color-white) / 1);
+}

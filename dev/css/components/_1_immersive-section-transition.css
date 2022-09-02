@@ -1,0 +1,75 @@
+/* -------------------------------- 
+
+File#: _1_immersive-section-transition
+Title: Immersive Section Transition
+Descr: A media element that animates to a full-screen block, before transitioning to the next section of content
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.js .immerse-section-tr {
+  position: relative;
+  --immerse-section-tr-opacity: 0;
+}
+.js .immerse-section-tr__media {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.js .immerse-section-tr--disabled .immerse-section-tr__media {
+  position: relative;
+}
+.js .immerse-section-tr__figure {
+  will-change: transform;
+  pointer-events: auto;
+  position: relative;
+  height: 0;
+}
+.js .immerse-section-tr__figure > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.js .immerse-section-tr__figure--16-9 {
+  padding-bottom: 56.25%;
+}
+.js .immerse-section-tr__figure--3-4 {
+  padding-bottom: 133.33%;
+}
+.js .immerse-section-tr__content {
+  position: relative;
+  z-index: 3;
+  transform: translateZ(0);
+}
+.js .immerse-section-tr__content::after, .js .immerse-section-tr__content::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  @apply bg-floor;
+  opacity: var(--immerse-section-tr-opacity, 0);
+  pointer-events: none;
+}
+.js .immerse-section-tr__content::before {
+  height: 100%;
+  z-index: -1;
+}
+.js .immerse-section-tr__content::after {
+  height: 100vh;
+  transform: translateY(-100%);
+}
+.js .immerse-section-tr--disabled .immerse-section-tr__content::before {
+  opacity: 1;
+}
+
+html:not(.js) .immerse-section-tr__content {
+  @apply bg-floor;
+}

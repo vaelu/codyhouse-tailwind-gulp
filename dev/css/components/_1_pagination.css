@@ -1,0 +1,66 @@
+/* -------------------------------- 
+
+File#: _1_pagination
+Title: Pagination 
+Descr: Component used to navigate through pages of related content
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.pagination--split .pagination__list {
+  width: 100%;
+}
+.pagination--split .pagination__list > *:first-child {
+  margin-right: auto;
+}
+.pagination--split .pagination__list > *:last-child {
+  margin-left: auto;
+}
+
+.pagination__item {
+  display: inline-block;
+  display: inline-flex;
+  height: 100%;
+  align-items: center;
+  padding: 0.5rem 0.6755rem;
+  white-space: nowrap;
+  line-height: 1;
+  @apply rounded;
+  text-decoration: none;
+  @apply text-contrast-high;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  will-change: transform;
+  transition: 0.2s;
+}
+@media (min-width: 64rem) {
+  .pagination__item {
+    padding: 0.75rem 1.01625rem;
+  }
+}
+
+.pagination__item:hover:not(.pagination__item--selected):not(.pagination__item--ellipsis) {
+  background-color: hsla(var(--color-contrast-higher) / 0.1);
+}
+.pagination__item:active {
+  transform: translateY(2px);
+}
+
+.pagination__item--selected {
+  @apply bg-contrast-higher;
+  @apply text-floor;
+  @apply shadow-md;
+}
+
+.pagination__item--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.pagination__jumper .form-control {
+  width: 3em;
+  @apply mr-2 lg:mr-3;
+}
+.pagination__jumper em {
+  flex-shrink: 0;
+  white-space: nowrap;
+}

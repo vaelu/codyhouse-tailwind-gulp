@@ -1,0 +1,48 @@
+/* -------------------------------- 
+
+File#: _1_feature-v10
+Title: Feature v10
+Descr: A feature section containing two adjacent content blocks
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.feature-v10 {
+  position: relative;
+  z-index: 1;
+}
+
+.feature-v10__link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform-origin: left bottom;
+}
+.feature-v10__link i {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.feature-v10__link::after {
+  content: "";
+  background-color: currentColor;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  opacity: 0.15;
+}
+.feature-v10__link:hover {
+  transform: scale(1.3);
+}
+.feature-v10__link:hover i {
+  transform: scale(0.7);
+}
+.feature-v10__link:hover::after {
+  height: 100%;
+}

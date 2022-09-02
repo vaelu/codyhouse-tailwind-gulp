@@ -1,0 +1,112 @@
+/* -------------------------------- 
+
+File#: _1_details-list
+Title: Details List
+Descr: Pairs of related information displayed in a list
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --details-list-border-width: 1px;
+  --details-list-border-opacity: 0.15;
+}
+
+.details-list--rows .details-list__item {
+  border-bottom: var(--details-list-border-width) solid hsla(var(--color-contrast-higher) / var(--details-list-border-opacity));
+}
+.details-list--rows .details-list__item:last-child {
+  border-bottom: none;
+}
+
+.details-list--cols .details-list__item {
+  border-right: var(--details-list-border-width) solid hsla(var(--color-contrast-higher) / var(--details-list-border-opacity));
+}
+.details-list--cols .details-list__item:last-child {
+  border-right: none;
+}
+
+@media (min-width: 32rem) {
+  .details-list--rows\@xs .details-list__item {
+    border-right: 0;
+    border-bottom: var(--details-list-border-width) solid hsla(var(--color-contrast-higher) / var(--details-list-border-opacity));
+  }
+  .details-list--rows\@xs .details-list__item:last-child {
+    border-bottom: none;
+  }
+
+  .details-list--cols\@xs .details-list__item {
+    border-bottom: 0;
+    border-right: var(--details-list-border-width) solid hsla(var(--color-contrast-higher) / var(--details-list-border-opacity));
+  }
+  .details-list--cols\@xs .details-list__item:last-child {
+    border-right: none;
+  }
+}
+@media (min-width: 48rem) {
+  .details-list--rows\@sm .details-list__item {
+    border-right: 0;
+    border-bottom: var(--details-list-border-width) solid hsla(var(--color-contrast-higher) / var(--details-list-border-opacity));
+  }
+  .details-list--rows\@sm .details-list__item:last-child {
+    border-bottom: none;
+  }
+
+  .details-list--cols\@sm .details-list__item {
+    border-bottom: 0;
+    border-right: var(--details-list-border-width) solid hsla(var(--color-contrast-higher) / var(--details-list-border-opacity));
+  }
+  .details-list--cols\@sm .details-list__item:last-child {
+    border-right: none;
+  }
+}
+@media (min-width: 64rem) {
+  .details-list--rows\@md .details-list__item {
+    border-right: 0;
+    border-bottom: var(--details-list-border-width) solid hsla(var(--color-contrast-higher) / var(--details-list-border-opacity));
+  }
+  .details-list--rows\@md .details-list__item:last-child {
+    border-bottom: none;
+  }
+
+  .details-list--cols\@md .details-list__item {
+    border-bottom: 0;
+    border-right: var(--details-list-border-width) solid hsla(var(--color-contrast-higher) / var(--details-list-border-opacity));
+  }
+  .details-list--cols\@md .details-list__item:last-child {
+    border-right: none;
+  }
+}
+@media (min-width: 80rem) {
+  .details-list--rows\@lg .details-list__item {
+    border-right: 0;
+    border-bottom: var(--details-list-border-width) solid hsla(var(--color-contrast-higher) / var(--details-list-border-opacity));
+  }
+  .details-list--rows\@lg .details-list__item:last-child {
+    border-bottom: none;
+  }
+
+  .details-list--cols\@lg .details-list__item {
+    border-bottom: 0;
+    border-right: var(--details-list-border-width) solid hsla(var(--color-contrast-higher) / var(--details-list-border-opacity));
+  }
+  .details-list--cols\@lg .details-list__item:last-child {
+    border-right: none;
+  }
+}
+@media (min-width: 90rem) {
+  .details-list--rows\@xl .details-list__item {
+    border-right: 0;
+    border-bottom: var(--details-list-border-width) solid hsla(var(--color-contrast-higher) / var(--details-list-border-opacity));
+  }
+  .details-list--rows\@xl .details-list__item:last-child {
+    border-bottom: none;
+  }
+
+  .details-list--cols\@xl .details-list__item {
+    border-bottom: 0;
+    border-right: var(--details-list-border-width) solid hsla(var(--color-contrast-higher) / var(--details-list-border-opacity));
+  }
+  .details-list--cols\@xl .details-list__item:last-child {
+    border-right: none;
+  }
+}

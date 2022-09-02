@@ -1,0 +1,75 @@
+/* -------------------------------- 
+
+File#: _2_points-of-interest
+Title: Points Of Interest
+Descr: Highlight the points of interest of an image and provide additional details for each one.
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.poi {
+  pointer-events: none;
+}
+
+.poi__item {
+  position: absolute;
+  pointer-events: auto;
+}
+
+.poi__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --size: 32px;
+  height: var(--size);
+  width: var(--size);
+  border-radius: 50%;
+  @apply bg-accent;
+  @apply shadow-inner-top-sm;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.poi__btn::after {
+  /* pulse ring */
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 1px 1px hsl(var(--color-accent));
+  animation: poi-pulse 2s infinite;
+}
+.poi__btn .icon {
+  @apply text-white;
+  /* icon color */
+  --size: 12px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.poi__btn:hover .icon {
+  transform: scale(1.1);
+}
+
+.poi__item--visited button {
+  /* style of clicked button */
+  background-color: hsla(var(--color-black) / 0.95);
+  backdrop-filter: blur(10px);
+}
+.poi__item--visited button::after {
+  display: none;
+}
+
+@keyframes poi-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
