@@ -1,6 +1,7 @@
 # codyhouse-tailwind-gulp
 
 A little starter project when you want to use the awesome components from [CodyHouse](https://codyhouse.co/) with the wonderful [Tailwind CSS](https://tailwindcss.com/) for small static sites. It includes a [gulpfile.js](gulpfile.js) with watch tasks for local development and deploy tasks for deployment to production.
+To better understand how the project structure works, the [Virgo template](https://codyhouse.co/template/virgo) from CodyHouse is included in this project as an example.
 
 ## Directory structure
 ```
